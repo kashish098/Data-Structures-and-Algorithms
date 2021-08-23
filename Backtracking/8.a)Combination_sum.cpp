@@ -15,13 +15,14 @@ void combinationSumUtil(int i, int sum, int target,vector<int> &arr,vector<vecto
     if(sum > target || i == arr.size()){
         return;
     }
-    combinationSumUtil(i+1,sum,target,arr,combinations,possibleCombination);
     
     sum += arr[i];
     possibleCombination.push_back(arr[i]);
-    combinationSumUtil(i+1,sum,target,arr,combinations,possibleCombination);
+    combinationSumUtil(i,sum,target,arr,combinations,possibleCombination);
     sum -= arr[i];
     possibleCombination.pop_back();
+    
+    combinationSumUtil(i+1,sum,target,arr,combinations,possibleCombination);
 }
 
 vector<vector<int> > combinationSum(vector<int> &A, int B) {
